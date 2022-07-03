@@ -1,0 +1,27 @@
+void findTeddyBear()
+{
+    toWall();
+    while (!onBeeper()) {
+        toCorner();
+    }
+}
+/*-----------------------------------------------------*/
+void toWall()
+{
+    while (frontIsClear() && !onBeeper()) {
+        moveForward();
+    }
+    if (!onBeeper()) {
+        turnLeft();
+    }
+}
+
+void toCorner()
+{
+    while (frontIsClear() && !onBeeper()) {
+        moveForward();
+    }
+    if (!onBeeper()) {
+        turnLeft();
+    }
+}
