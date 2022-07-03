@@ -1,0 +1,105 @@
+void addFast()
+{
+    while (rightIsClear()) {
+        if (onBeeper()) {
+            moveForward();
+            if (onBeeper()) {
+                if (beeperAhead()) {
+                    total();
+                }
+                else if (!beeperAhead()) {
+                    carry();
+                }
+            }
+            else if (!onBeeper()) {
+                if (beeperAhead()) {
+                    carry();
+                }
+                else if (!beeperAhead()) {
+                    add();
+                }
+            }
+        }
+        else if (!onBeeper()) {
+            moveForward();
+            if (onBeeper()) {
+                if (beeperAhead()) {
+                    carry();
+                }
+                else if (!beeperAhead()) {
+                    add();
+                }
+            }
+            else if (!onBeeper()) {
+                if (beeperAhead()) {
+                    add();
+                }
+                else if (!beeperAhead()) {
+                    polePos();
+                }
+            }
+        }
+    }
+}
+/*-----------------------------------------------------*/
+void carry()
+{
+    while (frontIsClear()) {
+        moveForward();
+    }
+    turnRight();
+    moveForward();
+    turnRight();
+    moveForward();
+    dropBeeper();
+    while (frontIsClear()) {
+        moveForward();
+    }
+    turnAround();
+}
+
+void add()
+{
+    while (frontIsClear()) {
+        moveForward();
+    }
+    turnRight();
+    dropBeeper();
+    moveForward();
+    turnRight();
+    while (frontIsClear()) {
+        moveForward();
+    }
+    turnAround();
+}
+
+void total()
+{
+    while (frontIsClear()) {
+        moveForward();
+    }
+    turnRight();
+    dropBeeper();
+    moveForward();
+    turnRight();
+    moveForward();
+    dropBeeper();
+    while (frontIsClear()) {
+        moveForward();
+    }
+    turnAround();
+}
+
+void polePos()
+{
+    while (frontIsClear()) {
+        moveForward();
+    }
+    turnRight();
+    moveForward();
+    turnRight();
+    while (frontIsClear()) {
+        moveForward();
+    }
+    turnAround();
+}
