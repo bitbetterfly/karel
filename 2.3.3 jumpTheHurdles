@@ -1,0 +1,34 @@
+void jumpTheHurdles()
+{
+    while (!onBeeper()) {
+        nextHurdle();
+        if(!onBeeper()) {
+            jumpOneHurdle();   
+        }
+    }
+}
+/*-----------------------------------------------------*/
+void jumpOneHurdle()
+{
+    turnLeft();
+    while (!rightIsClear()) {
+        moveForward();
+    }
+    turnRight();
+    moveForward();
+    turnRight();
+    moveForward();
+    while (frontIsClear()) {
+        moveForward();
+    }
+    turnLeft();
+}
+
+void nextHurdle()
+{
+    if (frontIsClear()) {
+        while (frontIsClear() && !onBeeper()) {
+            moveForward();
+        }
+    }
+}
