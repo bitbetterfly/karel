@@ -1,0 +1,54 @@
+void secureTheCave()
+{
+    turnLeft();
+    repeat (10) {
+        run();
+        build();
+        turnRight();
+        if (frontIsClear()) {
+            moveForward();
+            turnLeft();
+        }
+    }
+}
+/*-----------------------------------------------------*/
+
+void run()
+{
+    while (frontIsClear()) {
+        moveForward();
+    }
+    turnAround();
+}
+
+void build()
+{
+    if (onBeeper()) {
+        pickBeeper();
+        moveForward();
+        if (onBeeper()) {
+            pickBeeper();
+            moveForward();
+            if (onBeeper()) {
+                pickBeeper();
+                run();
+                repeat (3) {
+                    dropBeeper();
+                    moveForward();
+                }
+            }
+            else {
+                run();
+                repeat (2) {
+                    dropBeeper();
+                    moveForward();
+                }
+            }
+        }
+        else {
+            run();
+            dropBeeper();
+            moveForward();
+        }
+    }
+}
