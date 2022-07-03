@@ -1,0 +1,45 @@
+void fetchTheStars()
+{
+    repeat (10) {
+        turnLeft();
+        repeat (5) {
+            moveForward();
+        }
+        pickAndBack();
+        dropBeeper();
+        turnLeft();
+        if (frontIsClear()) {
+            moveForward();
+        }
+    }   
+}
+/*-----------------------------------------------------*/
+
+void pickAndBack()
+{
+    if (frontIsClear()) {
+        moveForward();
+        if (frontIsClear()) {
+            moveForward();
+            pickBeeper();
+            turnAround();
+            repeat (7) {
+                moveForward();
+            }
+        }
+        else {
+            pickBeeper();
+            turnAround();
+            repeat (6) {
+                moveForward();
+            }
+        }
+    }
+    else {
+        pickBeeper();
+        turnAround();
+        repeat (5) {
+            moveForward();
+        }
+    }
+}
